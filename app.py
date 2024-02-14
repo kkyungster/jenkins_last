@@ -11,7 +11,7 @@ def system_info():
     server_host = socket.gethostname()
     server_ip = socket.gethostbyname(server_host)
     return f"""
-    <h1>시스템 정보 v2 </h1>
+    <h1>시스템 정보 v3 </h1>
     <p><strong>접속한 클라이언트 IP:</strong> {client_ip}</p>
     <p><strong>서버 호스트 명:</strong> {server_host}</p>
     <p><strong>서버 IP:</strong> {server_ip}</p>
