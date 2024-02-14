@@ -15,10 +15,10 @@ spec:
     spec:
       containers:
       - name: myweb
-        image: kkyugjin/jenkins-test:v1
+        image: kkyungjin/jenkins-test:v1
         ports:
         - containerPort: 80
-        
+
 ---
 apiVersion: v1
 kind: Service
