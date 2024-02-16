@@ -4,6 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myweb-deploy
+  namespace: jenkins-server
 spec:
   selector:
     matchLabels:
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
       - name: myweb
-        image: 973510907968.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins:v48
+        image: kkyungjin/jenkins-server:v1
         ports:
         - containerPort: 80
 
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: myweb-svc
+  namespace: jenkins-server
   annotations:
     alb.ingress.kubernetes.io/healthcheck-path: "/"
 spec:
@@ -32,7 +34,7 @@ spec:
   ports:
   - port: 80
     targetPort: 80
-  type: LoadBalancer
+  type: NodePort
 
 
 ---
@@ -40,7 +42,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
     name: myweb-ing
-    namespace: default
+    namespace: jenkins-server
     annotations:
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
